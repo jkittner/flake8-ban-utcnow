@@ -22,7 +22,7 @@ repos:
     rev: v2.0.1
     hooks:
     -   id: autopep8
--   repo: https://github.com/theendlessriver13/double-indent
+-   repo: https://github.com/jkittner/double-indent
     rev: 0.1.4
     hooks:
     -    id: double-indent
