@@ -1,5 +1,5 @@
-[![ci](https://github.com/theendlessriver13/flake8-ban-utcnow/workflows/ci/badge.svg)](https://github.com/theendlessriver13/flake8-ban-utcnow/actions?query=workflow%3Aci)
-[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/theendlessriver13/flake8-ban-utcnow/master.svg)](https://results.pre-commit.ci/latest/github/theendlessriver13/flake8-ban-utcnow/master)
+[![ci](https://github.com/jkittner/flake8-ban-utcnow/workflows/ci/badge.svg)](https://github.com/jkittner/flake8-ban-utcnow/actions?query=workflow%3Aci)
+[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/jkittner/flake8-ban-utcnow/master.svg)](https://results.pre-commit.ci/latest/github/jkittner/flake8-ban-utcnow/master)
 
 # flake8-ban-utcnow
 
