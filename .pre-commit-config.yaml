@@ -19,7 +19,7 @@ repos:
         additional_dependencies: [flake8-typing-imports==1.14.0]
         args: [--min-python-version=3.8]
 -   repo: https://github.com/pre-commit/mirrors-autopep8
-    rev: v2.0.1
+    rev: v2.0.2
     hooks:
     -   id: autopep8
 -   repo: https://github.com/jkittner/double-indent
@@ -46,6 +46,6 @@ repos:
     hooks:
     -   id: setup-cfg-fmt
 -   repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v0.991
+    rev: v1.0.1
     hooks:
     -   id: mypy
