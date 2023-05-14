@@ -50,7 +50,7 @@ Sample `.pre-commit-config.yaml`:
   rev: 6.0.0
   hooks:
     - id: flake8
-      additional_dependencies: [flake8-ban-utcnow==0.1.0]
+      additional_dependencies: [flake8-ban-utcnow==0.2.0]
 ```
 
 ## rationale
