@@ -4,7 +4,7 @@ import pytest
 
 from flake8_ban_utcnow import Plugin
 
-MSG = "UTC001 don't use datetime.utcnow(), use datetime.now(timezone.utc) instead"  # noqa: E501
+MSG = "UTC001 don't use datetime.datetime.utcnow(), use datetime.datetime.now(datetime.timezone.utc) instead or datetime.now(datetime.UTC) on >= 3.11."  # noqa: E501
 
 
 def results(s):
