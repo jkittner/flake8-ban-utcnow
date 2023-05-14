@@ -3,15 +3,27 @@
 
 # flake8-ban-utcnow
 
-flake8 plugin which checks that `datetime.utcnow()` is not used. It suggests using `datetime.now(timezone.utc)` instead.
+flake8 plugin which checks that `datetime.utcnow()` and `datetime.utcfromtimestamp()` are not used. It suggests using `datetime.now(timezone.utc)` and `datetime.fromtimestamp(ts, tz=timezone.utc)`instead respectively.
 
-**note:** timezone must be imported from datetime first:
+Also, `utcnow` and `utcfromtimestamp` are finally deprecated in Python 3.12:
+
+- PR: https://github.com/python/cpython/pull/103858
+- Issue: https://github.com/python/cpython/issues/103857
+
+**note:** timezone must be imported from `datetime` first:
 
 ```python
 from datetime import datetime
 from datetime import timezone
 
 datetime.now(timezone.utc)
+```
+
+```python
+from datetime import datetime
+from datetime import timezone
+
+datetime.fromtimestamp(1684079261, tz=timezone.utc)
 ```
 
 ## installation
@@ -22,9 +34,10 @@ pip install flake8-ban-utcnow
 
 ## flake8 code
 
-| Code   | Description                                                             |
-| ------ | ----------------------------------------------------------------------- |
-| UTC001 | don't use `datetime.utcnow()`, use `datetime.now(timezone.utc)` instead |
+| Code   | Description                                                                                                                                                                                     |
+| ------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| UTC001 | don't use datetime.datetime.utcnow(), use datetime.datetime.now(datetime.timezone.utc) instead or datetime.now(datetime.UTC) on >= 3.11.                                                        |
+| UTC002 | don't use datetime.datetime.utcfromtimestamp(), use datetime.datetime.fromtimestamp(..., tz=datetime.timezone.utc) instead or datetime.datetime.fromtimestamp(..., tz=datetime.UTC) on >= 3.11. |
 
 ## as a pre-commit hook
 
@@ -34,7 +47,7 @@ Sample `.pre-commit-config.yaml`:
 
 ```yaml
 - repo: https://github.com/pycqa/flake8
-  rev: 5.0.4
+  rev: 6.0.0
   hooks:
     - id: flake8
       additional_dependencies: [flake8-ban-utcnow==0.1.0]
@@ -88,7 +101,7 @@ timestamp from the `datetime` object created using `datetime.utcnow()`.
 ### the correct way
 
 - the computer is in `CEST` and we want to actually derive a `datetime` in **UTC**
-  formatted as a timestamp .
+  formatted as a timestamp.
 
   ```pycon
   >>> from datetime import timezone
@@ -105,6 +118,6 @@ timestamp from the `datetime` object created using `datetime.utcnow()`.
   Relative: A few seconds ago
   ```
 
-- the next thing to keep in mind is, that only timezone aware `datetime` objects
+- the next thing to keep in mind is, that only timezone-aware `datetime` objects
   can be compared hence using this forces us to always make sure all objects are
   timezone aware.
